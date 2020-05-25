@@ -28,8 +28,8 @@ class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final TextEditingController controller = TextEditingController();
-  String initialCountry = 'NG';
-  PhoneNumber number = PhoneNumber(isoCode: 'NG');
+  String initialCountry = 'BR';
+  PhoneNumber number = PhoneNumber(isoCode: 'BR');
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               ignoreBlank: false,
               autoValidate: false,
+              formatInput: true,
               selectorTextStyle: TextStyle(color: Colors.black),
               initialValue: number,
               textFieldController: controller,
@@ -73,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getPhoneNumber(String phoneNumber) async {
     PhoneNumber number =
-        await PhoneNumber.getRegionInfoFromPhoneNumber(phoneNumber, 'US');
+        await PhoneNumber.getRegionInfoFromPhoneNumber(phoneNumber, 'BR');
 
     setState(() {
       this.number = number;
