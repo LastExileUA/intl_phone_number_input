@@ -48,10 +48,7 @@ class PhoneNumber extends Equatable {
         phoneNumber: number.phoneNumber,
         isoCode: number.isoCode,
       );
-      return formattedNumber.replaceAll(
-        RegExp('^([\\+?${number.dialCode}\\s?]+)'),
-        '',
-      );
+      return formattedNumber.replaceFirst(RegExp('^([\\+]?${number.dialCode}[\\s]?)'), '',);
     } else {
       print('ISO Code is "${phoneNumber.isoCode}"');
       return '';
@@ -61,7 +58,7 @@ class PhoneNumber extends Equatable {
   String parseNumber() {
     return this
         .phoneNumber
-        .replaceAll(RegExp('^([\\+?${this.dialCode}\\s?]+)'), '');
+        .replaceFirst(RegExp('^([\\+]?${this.dialCode}[\\s]?)'), '');
   }
 
   ///For predefined phone number - get the initial country ISO2 code from the dial code

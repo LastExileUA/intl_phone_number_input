@@ -28,8 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final TextEditingController controller = TextEditingController();
-  String initialCountry = 'BR';
-  PhoneNumber number = PhoneNumber(isoCode: 'BR');
+  PhoneNumber number = PhoneNumber(isoCode: 'NG');
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +40,8 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             InternationalPhoneNumberInput(
               onInputChanged: (PhoneNumber number) {
-                print(number.phoneNumber);
+                this.number = number;
+                print(number);
               },
               onInputValidated: (bool value) {
                 print(value);
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void getPhoneNumber(String phoneNumber) async {
     PhoneNumber number =
-        await PhoneNumber.getRegionInfoFromPhoneNumber(phoneNumber, 'BR');
+        await PhoneNumber.getRegionInfoFromPhoneNumber(phoneNumber, 'US');
 
     setState(() {
       this.number = number;
